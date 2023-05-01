@@ -37,7 +37,7 @@ namespace SickDev.CommandSystem
 				HandleArgumentCharacter(stringArgs[i], ref groupifier, ref arg, argsList);
 
 			//If we reach the end of the string, whatever came before is the last argument
-			if (arg.Length == 0)
+			if (arg != string.Empty)
 				argsList.Add(arg);
 
 			args = argsList.ConvertAll(x => new ParsedArgument(x)).ToArray();
@@ -58,7 +58,7 @@ namespace SickDev.CommandSystem
 		void HandleSeparator(ref string arg, List<string> argsList)
 		{
 			//If the argument is not empty, then this is the end of argument and thus can be added to the list
-			if (arg.Length == 0)
+			if (arg != string.Empty)
 			{
 				argsList.Add(arg);
 				arg = string.Empty;
